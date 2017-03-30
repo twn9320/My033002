@@ -12,7 +12,8 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
     String cities[] = {"台北","台中","台南","高雄"};
     String codes[]={"02","04","06","07"};
-    ArrayList<Map<String,String>> mylist = new ArrayList<>();
+    int imgs[]= {R.drawable.tp,R.drawable.tc,R.drawable.tn,R.drawable.kh};
+    ArrayList<Map<String,Object>> mylist = new ArrayList<>();
     ListView lv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,15 +23,16 @@ public class MainActivity extends AppCompatActivity {
         int  i ;
         lv=(ListView)findViewById(R.id.listView);
         for(i=0;i<codes.length;i++){
-            Map m = new HashMap();
+            Map<String,Object> m = new HashMap();
             m.put("city",cities[i]);
             m.put("code",codes[i]);
+            m.put("img",imgs[i]);
             mylist.add(m);
         }
         //R.layout.myitem 為 自訂layout   textView textView2也是自訂layout內的物件
         SimpleAdapter adapter = new SimpleAdapter(MainActivity.this,mylist,
-                R.layout.myitem,new String[]{"city","code"},
-                new int[]{R.id.textView,R.id.textView2});
+                R.layout.myitem,new String[]{"city","code","img"},
+                new int[]{R.id.textView,R.id.textView2,R.id.imageView});
         lv.setAdapter(adapter);
     }
 }
