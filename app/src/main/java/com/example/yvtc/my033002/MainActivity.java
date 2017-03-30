@@ -27,9 +27,10 @@ public class MainActivity extends AppCompatActivity {
             m.put("code",codes[i]);
             mylist.add(m);
         }
+        //R.layout.myitem 為 自訂layout   textView textView2也是自訂layout內的物件
         SimpleAdapter adapter = new SimpleAdapter(MainActivity.this,mylist,
-                android.R.layout.simple_list_item_2,new String[]{"city","code"},
-                new int[]{android.R.id.text1,android.R.id.text2});
+                R.layout.myitem,new String[]{"city","code"},
+                new int[]{R.id.textView,R.id.textView2});
         lv.setAdapter(adapter);
     }
 }
